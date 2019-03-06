@@ -32,22 +32,18 @@ class FeatDataset(Dataset):
         feat2 = feat['pos_y']
         feat3 = feat['vel_x']
         feat4 = feat['vel_y']
-        feat5 = feat['pos_xy']
 
         feat1 = torch.FloatTensor(feat1)
         feat2 = torch.FloatTensor(feat2)
         feat3 = torch.FloatTensor(feat3)
         feat4 = torch.FloatTensor(feat4)
-        feat5 = torch.FloatTensor(feat5)
 
-        feat_set1 = torch.cat((feat1, feat2), 1)
-        feat_set2 = torch.cat((feat1, feat2, feat3, feat4), 1)
-        feat_set3 = torch.cat((feat1, feat2, feat3, feat4, feat5), 1)
+        feat_set = torch.cat((feat1, feat2, feat3, feat4), 1)
 
         trial_idx = feat['trial']  # added
         trial_idx = torch.FloatTensor(trial_idx)  # added
 
-        feat = feat_set2
+        feat = feat_set
 
         # feat = feat[:, :2]
         # feat = torch.FloatTensor(feat)/self.maxval
