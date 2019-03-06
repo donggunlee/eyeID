@@ -61,14 +61,8 @@ class StackedBRNN(nn.Module):
         # Concat hidden layers
         output = torch.cat(outputs[1:], 2) # TxNxH
 
-        # Average across time
-        # output = torch.mean(output, 0) # TxNxH --> NxH
-
         # Select the last hidden value
         output = output[-1, :, :]    # TxNxH --> NxH
-
-        # Normalize the output of RNN so that the sum is 1
-        # output = output / sum(sum(output))
 
         # Concat with trial info
         output = torch.cat((output, trial_vec), 1)
