@@ -4,9 +4,9 @@ Pytorch version
 
 [Quick run]
 
-git clone https://github.com/donggunlee/eyeID.git
-adjust path in data/train_shuffle.csv, data/valid_shuffle.csv, data/test_shuffle.csv
-python train.py
+1. git clone https://github.com/donggunlee/eyeID.git
+2. adjust path in data/train_shuffle.csv, data/valid_shuffle.csv, data/test_shuffle.csv
+3. python train.py
 
 [Data]
 
