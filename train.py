@@ -303,5 +303,5 @@ if __name__ == '__main__':
         test_loss_set_epoch_npy = test_loss_set_epoch.numpy()
         test_acc_set_epoch_npy = test_acc_set_epoch.numpy()
 
-        matfilename = 'exp_featset_RNN' + str(args.rnn_layers) + '_' + str(args.rnn_hidden) + '_FC' + str(args.fc_layers) + '_' + str(args.fc_hidden)
+        matfilename = 'exp_RNN' + str(args.rnn_layers) + '_' + str(args.rnn_hidden) + '_FC' + str(args.fc_layers) + '_' + str(args.fc_hidden)
         sio.savemat(matfilename, dict(train_loss=train_loss_set_epoch_npy, train_acc=train_acc_set_epoch_npy, valid_loss=valid_loss_set_epoch_npy, valid_acc=valid_acc_set_epoch_npy, test_loss=test_loss_set_epoch_npy, test_acc=test_acc_set_epoch_npy))
