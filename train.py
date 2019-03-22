@@ -8,7 +8,7 @@ import torch
 import torch.nn as nn
 from tqdm import tqdm
 from torch.autograd import Variable
-from loader_featset2 import FeatLoader, FeatDataset, BucketingSampler
+from loader_featset import FeatLoader, FeatDataset, BucketingSampler
 
 from model import StackedBRNN, supported_rnns
 from utils import AverageMeter, _get_variable_nograd, _get_variable_volatile, _get_variable
@@ -26,11 +26,11 @@ parser.add_argument('--expnum', type=int, default=0)
 
 
 parser.add_argument('--train_manifest', metavar='DIR',
-                    help='path to train manifest csv', default='data/train_shuffle_220.csv')
+                    help='path to train manifest csv', default='data/train_shuffle.csv')
 parser.add_argument('--val_manifest', metavar='DIR',
-                    help='path to validation manifest csv', default='data/valid_shuffle_220.csv')
+                    help='path to validation manifest csv', default='data/valid_shuffle.csv')
 parser.add_argument('--test_manifest', metavar='DIR',
-                    help='path to test manifest csv', default='data/test_shuffle_220.csv')
+                    help='path to test manifest csv', default='data/test_shuffle.csv')
 
 parser.add_argument('--batch_size', default=40, type=int, help='Batch size for training')
 parser.add_argument('--num_workers', default=1, type=int, help='Number of workers used in data-loading')
@@ -303,5 +303,5 @@ if __name__ == '__main__':
         test_loss_set_epoch_npy = test_loss_set_epoch.numpy()
         test_acc_set_epoch_npy = test_acc_set_epoch.numpy()
 
-        matfilename = 'exp_220_featset2_RNN' + str(args.rnn_layers) + '_' + str(args.rnn_hidden) + '_FC' + str(args.fc_layers) + '_' + str(args.fc_hidden)
+        matfilename = 'exp_RNN' + str(args.rnn_layers) + '_' + str(args.rnn_hidden) + '_FC' + str(args.fc_layers) + '_' + str(args.fc_hidden)
         sio.savemat(matfilename, dict(train_loss=train_loss_set_epoch_npy, train_acc=train_acc_set_epoch_npy, valid_loss=valid_loss_set_epoch_npy, valid_acc=valid_acc_set_epoch_npy, test_loss=test_loss_set_epoch_npy, test_acc=test_acc_set_epoch_npy))
