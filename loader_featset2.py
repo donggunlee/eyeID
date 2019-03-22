@@ -28,11 +28,11 @@ class FeatDataset(Dataset):
         feat = np.load(feat_path, encoding="latin1")
         feat = feat.item()
 
-        feat1 = feat['pos_xn']
-        feat2 = feat['pos_yn']
-        feat3 = feat['vel_xn']
-        feat4 = feat['vel_yn']
-        feat5 = feat['pos_xyn']
+        feat1 = feat['pos_x']
+        feat2 = feat['pos_y']
+        feat3 = feat['vel_x']
+        feat4 = feat['vel_y']
+        feat5 = feat['pos_xy']
 
         feat1 = torch.FloatTensor(feat1)
         feat2 = torch.FloatTensor(feat2)
